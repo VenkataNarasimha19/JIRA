@@ -1,0 +1,155 @@
+Glossary of Key Terms:
+
+Important terms and definitions for Jira Software
+General Jira Terms
+Issue – an individual item in Jira like a task, bug, ticket, incident, request, or “to do” item
+Project – a collection of Jira issues. A container for all your team’s initiatives, tasks, and “to do” items
+Issue type – a classification of issues in a Jira project. E.g., Epic, story, bug, task
+
+Board – a status-based view of issues
+Swimlane – a horizontal grouping of issues on a board
+Quick filter – a one-click segmenting function on a board
+Dashboard – a statistics-based view of issues
+Gadget – dynamic content blocks on a dashboard
+
+Search Terms
+JQL – Jira query language. The way to search for issues in Jira.
+Query – a question you ask Jira. Example: How many bugs did the Marketing team report this week?
+Filter – a saved, reusable search query
+Filter subscription – a scheduled query with emailed results
+App – third-party software that extends Jira capabilities
+
+
+Software Development Terms
+Agile – an iterative and collaborative process for rapid development
+DevOps – a collaboration between development and operations
+Backlog – a collection of unprioritized work
+Sprint – a time-boxed iteration of rapid work
+Scrum – work delivered at intervals called sprints. E.g., Every two weeks.
+Kanban – work delivered continuously on a flexible schedule
+Burndown chart – a graphical representation of work remaining
+Burnup chart – a graphical representation of work completed
+Scope creep – a unplanned increase in scope after work starts
+Velocity – a measure of team speed or efficiency
+Epic – a large initiative that encompasses smaller issues
+Epic name – a unique identifier for an epic and associated issues
+Epic link – a relational link that associates issues with an epic.
+In January 2024, Atlassian rolled out a new strategy for issue and epic use in Jira Cloud. The Epic link and Parent link fields on the issue view screen were replaced by a single Parent field.
+Linked issue – an association between one issue and any other issue
+
+Story – a requirement written as a user goal. E.g., As a user, I want X so I can do Y.
+Story point – a relative measurement of effort
+Bug – a problem, error, omission, or defect
+Fix version – a grouping of issues for a specific release
+Task – something that needs to be done
+Sub-task – the smallest piece of work. A child of another issue
+Workflow Terms Workflow – a sequence of life cycle steps to reach a goal. E.g., Design > Code > Test > Deploy
+Status – an issue’s current state
+Transition – a forward or backward movement between statuses
+Behavior – an action before, during, or after a transition. E.g., A trigger, condition, validator, or post function.
+ 
+
+Changed Terms
+Atlassian has changed terminology over the years and some terms were renamed. For example: 
+App – formerly add-on and plugin
+Jira Service Management (JSM) – formerly Jira Service Desk (JSD)
+Jira Work Management (Cloud) – formerly Jira Core
+In May 2024, Atlassian announced that Jira Software and Jira Work Management are combined under the brand name Jira.
+Parent (Cloud) – formerly epic link and parent link
+Company-managed project (Cloud) – formerly traditional or classic project
+Team-managed project (Cloud) – formerly independent or next-gen project
+
+
+
+
+Top Jira Software Queries
+A query is a question you ask Jira and JQL (“Jira query language”) is the language you use to ask. Use JQL to search through thousands of issues to find the few you’re looking for. JQL is also the way to control which issues appear in a filter, board, dashboard, or report.
+
+Here are some helpful queries, formats, and functions to use in Jira Software.
+
+Estimation
+Jira has two built-in estimation methods. Stories often use story point estimates. Tasks often use time estimates.
+
+Examples
+
+originalEstimate is not empty
+remainingEstimate > 1d
+timespent > 8h
+updated > startOfDay()
+"story points" = 2
+"story point estimate" >= 2
+Versions
+A version is a grouping of issues in a specific release.
+
+Common Functions
+
+latestReleasedVersion()
+earliestUnreleasedVersion()
+releasedVersions()
+unreleasedVersions()
+Examples
+
+fixversion = version-name
+fixversion in (version1, version2)
+fixversion is not empty
+fixversion in unreleasedVersions()
+fixversion = earliestUnreleasedVersion()
+fixversion = latestReleasedVersion()
+affectedVersion = version-name
+Sprints
+A sprint is a time-boxed iteration of rapid work.
+
+Common Functions
+
+openSprints()
+closedSprints()
+futureSprints()
+Examples
+
+Find issues in created but not started sprints
+sprint in futureSprints()
+Find issues in a specific sprint
+sprint = sprint-ID
+sprint = sprint-name
+sprint in (sprint1, sprint2, sprint3)
+Find issues not in any sprint
+sprint is empty
+Components
+A Component is a way to group similar issues in a specific Jira project.
+
+Examples
+
+Find issues with a specific component
+component = component-name
+component = component-ID
+component in (component1, component2)
+Linking Issues
+The linked issues feature creates a loose association of issues, regardless of their Jira project or issue type.
+
+Examples
+
+Find issues linked to a specific issue
+issue in linkedIssues(SCRUM-8)
+Find issues linked to a specific issue with a specific link type
+issue in linkedIssues(SCRUM-8, "relates to")
+Simplifying Complex Queries
+If queries are too complex, Jira has trouble determining which projects are included and can’t check the needed user access permissions. Here are some examples of complex queries and how to simplify them to avoid problems.
+
+ 
+
+Complex
+assignee = currentUser()
+Simplified
+project = DEV and assignee = currentUser()
+Complex
+project = DEV or fixVersion = 1.0.0
+Simplified
+project = DEV and fixVersion = 1.0.0
+Complex
+<clause> AND (<clause> OR <clause>) AND (<clause> OR <clause>)
+Simplified
+<clause> OR (<clause> AND <clause>) OR <clause> OR (<clause> AND <clause>)
+Resources
+See the Jira Software JQL documentation for additional functions, fields, operators, and clauses. Also see Atlassian’s guidelines for writing efficient JQL queries.
+
+
